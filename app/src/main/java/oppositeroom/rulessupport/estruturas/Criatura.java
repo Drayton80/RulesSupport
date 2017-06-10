@@ -26,7 +26,8 @@ public class Criatura {
     protected int[] outros_vontade = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     //Modificadores de Combate:
-    protected int ataque_base, agarrar, iniciativa, ca;
+    protected int ataque_base, agarrar, iniciativa;
+    protected int ca, toque, surpresa;
     protected int[] outros_iniciativa = {0, 0, 0};
     protected int[] outros_agarrar = {0, 0, 0};
 
@@ -39,18 +40,100 @@ public class Criatura {
     //Tendência e Características Especiais:
     protected String tendencia, qualidades_especiais, ataques_especiais;
 
-    //Agarrar e seus Modificadores:
     //Classe de Armadura e suas Variáveis:
     protected int armadura = 0;
     protected int armadura_natural = 0;
-    protected int[] outros_modificadores = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    protected int[] outros_modificadores_armadura = {0, 0, 0, 0, 0};
+    protected int[] outros_modificadores_destreza = {0, 0, 0, 0, 0};
+
+
 
    /**--------------------------// Construtores da Classe \\-------------------------------**/
 
     /*--------------------------|| Construtor  Automático ||-----------------------------*/
+    /** Descrição:
+     *    Esse construtor recebe a maioria dos dados de uma criatura como parâmetros e cálcula
+     *    automaticamente os demais.
+     */
     public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
                       String dados_de_vida, int pv, String deslocamento, String escalada,
                       String natacao, int ataque_base, String corpo, String distancia,
+                      String total_corpo, String total_distancia, String espaco,
+                      String alcance, String ataques_especiais,
+                      String qualidades_especiais, String tendencia,
+                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar){
+
+        this.nome = nome;
+        this.nd = nd;
+
+        this.tipo = tipo;
+        this.tamanho = tamanho;
+        this.subtipos = subtipos;
+
+        this.dados_de_vida = dados_de_vida;
+        this.pv = pv;
+
+        this.deslocamento = deslocamento;
+        this.escalada = escalada;
+        this.natacao = natacao;
+
+        this.ataque_base = ataque_base;
+        this.corpo = corpo;
+        this.distancia = distancia;
+        this.total_corpo = total_corpo;
+        this.total_distancia = total_distancia;
+
+        this.espaco = espaco;
+        this.alcance = alcance;
+
+        this.ataques_especiais = ataques_especiais;
+        this.qualidades_especiais = qualidades_especiais;
+
+        this.tendencia = tendencia;
+
+        this.fortitude = fortitude;
+        this.reflexos = reflexos;
+        this.vontade = vontade;
+
+
+       //---Habilidades---//
+        this.hFor = hFor;
+        this.hDes = hDes;
+        this.hCon = hCon;
+        this.hSab = hSab;
+        this.hInt = hInt;
+        this.hCar = hCar;
+       //-----------------//
+
+       //------Modificadores de Habilidade------//
+        mFor = modificador_de_habilidade(hFor);
+        mDes = modificador_de_habilidade(hDes);
+        mCon = modificador_de_habilidade(hCon);
+        mSab = modificador_de_habilidade(hSab);
+        mInt = modificador_de_habilidade(hInt);
+        mCar = modificador_de_habilidade(hCar);
+       //----------------------------------------//
+
+       //-Calculos de Atributos-//
+        calcula_armadura();
+        calcula_resistencias();
+        calcula_iniciativa();
+        calcula_agarrar();
+       //-----------------------//
+
+    }
+    /*-------------------------||------------------------||-----------------------------*/
+
+
+    /*--------------------------|| Construtor de Bloco ||------------------------------*/
+    /** Descrição:
+     *    Esse construtor recebe todos os parâmetros no mesmo formato de um bloco de estatísticas
+     *    de uma criatura (D&D 3.5, Livro do Mestre, Página 84).
+     */
+    public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
+                      String dados_de_vida, int pv, int iniciativa, String deslocamento,
+                      String escalada, String natacao, int ca, int toque, int surpresa,
+                      int ataque_base, int agarrar, String corpo, String distancia,
                       String total_corpo, String total_distancia, String espaco,
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
@@ -108,19 +191,7 @@ public class Criatura {
         mCar = modificador_de_habilidade(hCar);
         //----------------------------------------//
 
-        //---Calculos de Atributos---//
-        calcula_armadura();
-        calcula_resistencias();
-
-        //---------------------------//
-
-
     }
-    /*-------------------------||------------------------||-----------------------------*/
-
-
-    /*--------------------------|| Construtor de Bloco ||------------------------------*/
-
     /*--------------------------||---------------------||------------------------------*/
 
 
@@ -244,13 +315,20 @@ public class Criatura {
      *
      */
     protected void calcula_armadura(){
-        int outros = 0;
+        int outros_armadura = 0;
+        int outros_destreza = 0;
 
-        for(int i = 0; i < outros_modificadores.length; i++){
-            outros = outros + outros_modificadores[i];
+        for(int i = 0; i < outros_modificadores_armadura.length; i++){
+            outros_armadura = outros_armadura + outros_modificadores_armadura[i];
         }
 
-        ca = 10 + mDes + armadura + armadura_natural + outros;
+        for(int i = 0; i < outros_modificadores_destreza.length; i++){
+            outros_destreza = outros_destreza + outros_modificadores_destreza[i];
+        }
+
+        ca = 10 + mDes + armadura + armadura_natural + outros_armadura + outros_destreza;
+        toque = 10 + mDes + outros_destreza;
+        surpresa = 10 + armadura + armadura_natural + outros_armadura;
     }
 
 
@@ -298,6 +376,61 @@ public class Criatura {
     }
 
 
+    /** Calculador de Teste de Agarrar
+     *    Descrição:
+     *      Através da fórmula proposta no Livro do Jogador (D&D 3.5) na página 122 é feito
+     *      o somatório do teste de agarrar da criatura.
+     */
+    protected void calcula_agarrar(){
+        int modificador_tamanho = 0;
+        int somatorio_outros = 0;
+
+       // Modificador Especial de Tamanho: o teste de agarrar possuí um modificador
+       // especial atreçado ao tamnho da criatura em questão, os "If's" a seguir
+       // obtem ele.
+        if(tamanho.equals("Colossal") || tamanho.equals("colossal")){
+            modificador_tamanho = 16;
+        }
+
+        if(tamanho.equals("Imenso") || tamanho.equals("imenso")){
+            modificador_tamanho = 12;
+        }
+
+        if(tamanho.equals("Enorme") || tamanho.equals("enorme")){
+            modificador_tamanho = 8;
+        }
+
+        if(tamanho.equals("Grande") || tamanho.equals("grande")){
+            modificador_tamanho = 16;
+        }
+
+        if(tamanho.equals("Pequeno") || tamanho.equals("pequeno")){
+            modificador_tamanho = -4;
+        }
+
+        if(tamanho.equals("Miúdo") || tamanho.equals("miúdo") ||
+           tamanho.equals("Miudo") || tamanho.equals("miudo") ){
+            modificador_tamanho = -8;
+        }
+
+        if(tamanho.equals("Mínimo") || tamanho.equals("mínimo") ||
+           tamanho.equals("Minimo") || tamanho.equals("minimo") ){
+            modificador_tamanho = -12;
+        }
+
+        if(tamanho.equals("Minúsculo") || tamanho.equals("minúsculo") ||
+           tamanho.equals("Minusculo") || tamanho.equals("minusculo") ){
+            modificador_tamanho = -16;
+        }
+
+        for(int i = 0; i < outros_agarrar.length; i++){
+            somatorio_outros = somatorio_outros + outros_agarrar[i];
+        }
+
+        agarrar = ataque_base + mFor + modificador_tamanho + somatorio_outros;
+    }
+
+
     /** Atualizador de Dados e Atributos:
      *    Descrição:
      *      Esse método atualiza todos os dados que envolvem um cálculo especifico
@@ -314,24 +447,30 @@ public class Criatura {
     protected void atualiza_dados(){
         calcula_armadura();
         calcula_resistencias();
-
+        calcula_iniciativa();
+        calcula_agarrar();
     }
-
-
 
    /**---------------------------\\----------------------//----------------------------**/
 
 
 
 
-   /**----------------------------// Métodos de Leitura e Escrita \\-----------------------------**/
+   /**----------------------------// Métodos de Escrita \\-----------------------------**/
 
-    public void set_outros_modificadores_ca(int[] modificadores){
-        if (modificadores.length == outros_modificadores.length) {
+    public void set_outros_modificadores_armadura(int[] modificadores){
+        if (modificadores.length == outros_modificadores_armadura.length) {
             for (int i = 0; i < modificadores.length; i++) {
-                outros_modificadores[i] = modificadores[i];
+                outros_modificadores_armadura[i] = modificadores[i];
             }
+        }
+    }
 
+    public void set_outros_modificadores_destreza(int[] modificadores){
+        if (modificadores.length == outros_modificadores_destreza.length) {
+            for (int i = 0; i < modificadores.length; i++) {
+                outros_modificadores_destreza[i] = modificadores[i];
+            }
         }
     }
 
@@ -375,6 +514,6 @@ public class Criatura {
         }
     }
 
-   /**----------------------------\\------------------------------//-----------------------------**/
+   /**----------------------------\\--------------------//-----------------------------**/
 }
 
