@@ -463,6 +463,8 @@ public class Criatura {
             for (int i = 0; i < modificadores.length; i++) {
                 outros_modificadores_armadura[i] = modificadores[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -471,6 +473,8 @@ public class Criatura {
             for (int i = 0; i < modificadores.length; i++) {
                 outros_modificadores_destreza[i] = modificadores[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -479,6 +483,8 @@ public class Criatura {
             for (int i = 0; i < outros.length; i++) {
                 outros_fortitude[i] = outros[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -487,6 +493,8 @@ public class Criatura {
             for (int i = 0; i < outros.length; i++) {
                 outros_reflexos[i] = outros[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -495,6 +503,8 @@ public class Criatura {
             for (int i = 0; i < outros.length; i++) {
                 outros_vontade[i] = outros[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -503,6 +513,8 @@ public class Criatura {
             for (int i = 0; i < outros.length; i++) {
                 outros_iniciativa[i] = outros[i];
             }
+
+            atualiza_dados();
         }
     }
 
@@ -511,6 +523,8 @@ public class Criatura {
             for (int i = 0; i < outros.length; i++) {
                 outros_agarrar[i] = outros[i];
             }
+
+            atualiza_dados();
         }
     }
 
