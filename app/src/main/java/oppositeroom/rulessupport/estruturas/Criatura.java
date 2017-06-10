@@ -27,6 +27,9 @@ public class Criatura {
 
     //Modificadores de Combate:
     protected int ataque_base, agarrar, iniciativa, ca;
+    protected int[] outros_iniciativa = {0, 0, 0};
+    protected int[] outros_agarrar = {0, 0, 0};
+
     //Detalhes de Combate:
     protected String corpo, distancia, total_corpo, total_distancia;
     //Espaço e Tamanho:
@@ -119,6 +122,7 @@ public class Criatura {
     /*--------------------------|| Construtor de Bloco ||------------------------------*/
 
     /*--------------------------||---------------------||------------------------------*/
+
 
    /**-------------------------\\------------------------//-----------------------------**/
 
@@ -278,6 +282,22 @@ public class Criatura {
     }
 
 
+    /** Calculador de Iniciativa da Criatura
+     *    Descrição:
+     *      Faz a soma de todos os outros modificadores que influenciam na iniciativa com
+     *      o modificador de destreza.
+     */
+    protected void calcula_iniciativa(){
+        int somatoria_outros = 0;
+
+        for(int i = 0; i < outros_iniciativa.length; i++){
+            somatoria_outros = somatoria_outros + outros_iniciativa[i];
+        }
+
+        iniciativa = mDes + somatoria_outros;
+    }
+
+
     /** Atualizador de Dados e Atributos:
      *    Descrição:
      *      Esse método atualiza todos os dados que envolvem um cálculo especifico
@@ -307,7 +327,52 @@ public class Criatura {
    /**----------------------------// Métodos de Leitura e Escrita \\-----------------------------**/
 
     public void set_outros_modificadores_ca(int[] modificadores){
+        if (modificadores.length == outros_modificadores.length) {
+            for (int i = 0; i < modificadores.length; i++) {
+                outros_modificadores[i] = modificadores[i];
+            }
 
+        }
+    }
+
+    public void set_outros_fortitude(int[] outros){
+        if (outros.length == outros_fortitude.length) {
+            for (int i = 0; i < outros.length; i++) {
+                outros_fortitude[i] = outros[i];
+            }
+        }
+    }
+
+    public void set_outros_reflexos(int[] outros){
+        if (outros.length == outros_reflexos.length) {
+            for (int i = 0; i < outros.length; i++) {
+                outros_reflexos[i] = outros[i];
+            }
+        }
+    }
+
+    public void set_outros_vontade(int[] outros){
+        if (outros.length == outros_vontade.length) {
+            for (int i = 0; i < outros.length; i++) {
+                outros_vontade[i] = outros[i];
+            }
+        }
+    }
+
+    public void set_outros_iniciativa(int[] outros){
+        if (outros.length == outros_iniciativa.length) {
+            for (int i = 0; i < outros.length; i++) {
+                outros_iniciativa[i] = outros[i];
+            }
+        }
+    }
+
+    public void set_outros_agarrar(int[] outros){
+        if (outros.length == outros_agarrar.length) {
+            for (int i = 0; i < outros.length; i++) {
+                outros_agarrar[i] = outros[i];
+            }
+        }
     }
 
    /**----------------------------\\------------------------------//-----------------------------**/
