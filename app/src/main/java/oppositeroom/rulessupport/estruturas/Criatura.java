@@ -38,7 +38,9 @@ public class Criatura {
     //Dados da Criatura:
     protected String nome, tipo, subtipos;
     //Tendência e Características Especiais:
-    protected String tendencia, qualidades_especiais, ataques_especiais;
+    protected String tendencia;
+    protected String qualidades_especiais;
+    protected String ataques_especiais;
 
     //Classe de Armadura e suas Variáveis:
     protected int armadura = 0;
@@ -48,9 +50,9 @@ public class Criatura {
 
 
 
-   /**--------------------------// Construtores da Classe \\-------------------------------**/
+   /*---------------------------// Construtores da Classe \\--------------------------------*/
 
-    /*--------------------------|| Construtor  Automático ||-----------------------------*/
+    /*---------------------------| Construtor  Automático |------------------------------*/
     /** Descrição:
      *    Esse construtor recebe a maioria dos dados de uma criatura como parâmetros e cálcula
      *    automaticamente os demais.
@@ -122,10 +124,10 @@ public class Criatura {
        //-----------------------//
 
     }
-    /*-------------------------||------------------------||-----------------------------*/
+    /*--------------------------|------------------------|------------------------------*/
 
 
-    /*--------------------------|| Construtor de Bloco ||------------------------------*/
+    /*---------------------------| Construtor de Bloco |-------------------------------*/
     /** Descrição:
      *    Esse construtor recebe todos os parâmetros no mesmo formato de um bloco de estatísticas
      *    de uma criatura (D&D 3.5, Livro do Mestre, Página 84).
@@ -192,15 +194,15 @@ public class Criatura {
         //----------------------------------------//
 
     }
-    /*--------------------------||---------------------||------------------------------*/
+    /*---------------------------|---------------------|-------------------------------*/
 
 
-   /**-------------------------\\------------------------//-----------------------------**/
+   /*--------------------------\\------------------------//------------------------------*/
 
 
 
 
-   /**----------------------------// Métodos de Classe \\-----------------------------**/
+   /*----------------------------// Métodos de Classe \\-----------------------------*/
 
     /** Gerador dos Modificadores de Habilidades
      *    Descrição
@@ -302,12 +304,12 @@ public class Criatura {
         return modificador;
     }
 
-   /**----------------------------\\-------------------//-----------------------------**/
+   /*----------------------------\\-------------------//-----------------------------*/
 
 
 
 
-   /**---------------------------// Métodos de Instância \\----------------------------**/
+   /*----------------------------// Métodos de Instância \\-----------------------------*/
 
     /** Calculador de Classe de Armadura:
      *    Descrição:
@@ -451,13 +453,14 @@ public class Criatura {
         calcula_agarrar();
     }
 
-   /**---------------------------\\----------------------//----------------------------**/
+   /*----------------------------\\----------------------//-----------------------------*/
 
 
 
 
-   /**----------------------------// Métodos de Escrita \\-----------------------------**/
+   /*-----------------------------// Métodos de Escrita \\------------------------------*/
 
+    /*----------------------------| Outros Modificadores |----------------------------*/
     public void set_outros_modificadores_armadura(int[] modificadores){
         if (modificadores.length == outros_modificadores_armadura.length) {
             for (int i = 0; i < modificadores.length; i++) {
@@ -527,7 +530,8 @@ public class Criatura {
             atualiza_dados();
         }
     }
+    /*----------------------------|----------------------|----------------------------*/
 
-   /**----------------------------\\--------------------//-----------------------------**/
+   /*-----------------------------\\--------------------//------------------------------*/
 }
 
