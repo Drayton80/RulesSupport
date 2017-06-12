@@ -1,8 +1,12 @@
 package oppositeroom.rulessupport.estruturas;
 
 /** Classe Criatura
+ *    Descrição:
+ *      Classe que servirá de instância para qualquer criatura criada, sendo tal classe feita sob
+ *      os moldes de criaturas relativas ao D&D 3.5.
  *
- *  Autores: Opposite Room
+ *  Grupo: Opposite Room
+ *    Autor: Drayton80
  *
  */
 
@@ -21,9 +25,9 @@ public class Criatura {
 
     //Testes de Resistência e Outros Modificadores que os Influenciam:
     protected int fortitude, reflexos, vontade;
-    protected int[] outros_fortitude = {0, 0, 0, 0, 0, 0, 0, 0 ,0, 0};
-    protected int[] outros_reflexos = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    protected int[] outros_vontade = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    protected int[] outros_fortitude = {0, 0, 0, 0, 0};
+    protected int[] outros_reflexos = {0, 0, 0, 0, 0};
+    protected int[] outros_vontade = {0, 0, 0, 0, 0};
 
     //Modificadores de Combate:
     protected int ataque_base, agarrar, iniciativa;
@@ -45,92 +49,33 @@ public class Criatura {
     //Classe de Armadura e suas Variáveis:
     protected int armadura = 0;
     protected int armadura_natural = 0;
-    protected int[] outros_modificadores_armadura = {0, 0, 0, 0, 0};
-    protected int[] outros_modificadores_destreza = {0, 0, 0, 0, 0};
+    protected int[] outros_modificadores_armadura = {0, 0, 0};
+    protected int[] outros_modificadores_destreza = {0, 0, 0};
+
+    //Equipamentos em uso:
+    private String[] armas = {"", "", "", "", "", ""};
+    private String armadura_equipamento = "";
+    private String[] outros_equipamentos = {"", "", "", "", "", ""};
+    //for(...) { armas[i].equals("") ? "" : armas[i]; --> para não poluir ao exibir os vazios
+
+    //Talentos, perícias e tesouros:
+    private String[] talentos;
+    private String[] pericias;
+    private String[] moedas = {"0 PC", "0 PP", "0 PO", "0 PL"};
+    private String[] gemas = {"", "", "", "", "", "", "", "", "", "", ""};
+    private String[] obras_arte = {"", "", "", "", "", "", "", "", "", "", ""};
+    //AQUI PODE SER UM OBJETO DA CLASSE TESOURO EM VEZ DE CADA STRING SEPARADO *-*
+    //NOTA: Fazer um construtor sobrecarregado na classe tesouro
 
 
 
    /*---------------------------// Construtores da Classe \\--------------------------------*/
 
-    /*---------------------------| Construtor  Automático |------------------------------*/
-    /** Descrição:
-     *    Esse construtor recebe a maioria dos dados de uma criatura como parâmetros e cálcula
-     *    automaticamente os demais.
-     */
-    public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
-                      String dados_de_vida, int pv, String deslocamento, String escalada,
-                      String natacao, int ataque_base, String corpo, String distancia,
-                      String total_corpo, String total_distancia, String espaco,
-                      String alcance, String ataques_especiais,
-                      String qualidades_especiais, String tendencia,
-                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar){
-
-        this.nome = nome;
-        this.nd = nd;
-
-        this.tipo = tipo;
-        this.tamanho = tamanho;
-        this.subtipos = subtipos;
-
-        this.dados_de_vida = dados_de_vida;
-        this.pv = pv;
-
-        this.deslocamento = deslocamento;
-        this.escalada = escalada;
-        this.natacao = natacao;
-
-        this.ataque_base = ataque_base;
-        this.corpo = corpo;
-        this.distancia = distancia;
-        this.total_corpo = total_corpo;
-        this.total_distancia = total_distancia;
-
-        this.espaco = espaco;
-        this.alcance = alcance;
-
-        this.ataques_especiais = ataques_especiais;
-        this.qualidades_especiais = qualidades_especiais;
-
-        this.tendencia = tendencia;
-
-        this.fortitude = fortitude;
-        this.reflexos = reflexos;
-        this.vontade = vontade;
-
-
-       //---Habilidades---//
-        this.hFor = hFor;
-        this.hDes = hDes;
-        this.hCon = hCon;
-        this.hSab = hSab;
-        this.hInt = hInt;
-        this.hCar = hCar;
-       //-----------------//
-
-       //------Modificadores de Habilidade------//
-        mFor = modificador_de_habilidade(hFor);
-        mDes = modificador_de_habilidade(hDes);
-        mCon = modificador_de_habilidade(hCon);
-        mSab = modificador_de_habilidade(hSab);
-        mInt = modificador_de_habilidade(hInt);
-        mCar = modificador_de_habilidade(hCar);
-       //----------------------------------------//
-
-       //-Calculos de Atributos-//
-        calcula_armadura();
-        calcula_resistencias();
-        calcula_iniciativa();
-        calcula_agarrar();
-       //-----------------------//
-
-    }
-    /*--------------------------|------------------------|------------------------------*/
-
-
-    /*---------------------------| Construtor de Bloco |-------------------------------*/
+    /*----------------------------| Formato de Bloco |--------------------------------*/
     /** Descrição:
      *    Esse construtor recebe todos os parâmetros no mesmo formato de um bloco de estatísticas
-     *    de uma criatura (D&D 3.5, Livro do Mestre, Página 84).
+     *    de uma criatura (D&D 3.5, Livro do Mestre, Página 84) com algumas alterações para que
+     *    sejam recebidas também talentos e perícias.
      */
     public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
                       String dados_de_vida, int pv, int iniciativa, String deslocamento,
@@ -140,7 +85,8 @@ public class Criatura {
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
                       int fortitude, int reflexos, int vontade,
-                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar){
+                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
+                      String[] talents, String[] peric){
 
         this.nome = nome;
         this.nd = nd;
@@ -193,11 +139,119 @@ public class Criatura {
         mCar = modificador_de_habilidade(hCar);
         //----------------------------------------//
 
+        //Instanciando e atribuindo os valores ao String talentos
+        talentos = new String[talents.length];
+
+        for(int i = 0; i < talentos.length; i++){
+            talentos[i] = talents[i];
+        }
+        //Fim do processo
+
+        //Instanciando e atribuindo os valores ao String perícias
+        pericias = new String[peric.length];
+
+        for(int i = 0; i < pericias.length; i++){
+            pericias[i] = peric[i];
+        }
+        //Fim do processo
+
     }
-    /*---------------------------|---------------------|-------------------------------*/
+    /*-----------------------------|---------------------|--------------------------------*/
 
 
-   /*--------------------------\\------------------------//------------------------------*/
+    /*----------------------------| Valores Automáticos |--------------------------------*/
+    /** Descrição:
+     *    Esse construtor recebe todos quase todos os dados de uma criatura e calcula automaticamente
+     *    os que sobraram.
+     */
+    public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
+                      String dados_de_vida, int pv, String deslocamento,
+                      String escalada, String natacao,
+                      int ataque_base, String corpo, String distancia,
+                      String total_corpo, String total_distancia, String espaco,
+                      String alcance, String ataques_especiais,
+                      String qualidades_especiais, String tendencia,
+                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
+                      String[] talents, String[] peric){
+
+        this.nome = nome;
+        this.nd = nd;
+
+        this.tipo = tipo;
+        this.tamanho = tamanho;
+        this.subtipos = subtipos;
+
+        this.dados_de_vida = dados_de_vida;
+        this.pv = pv;
+
+        this.deslocamento = deslocamento;
+        this.escalada = escalada;
+        this.natacao = natacao;
+
+        this.ataque_base = ataque_base;
+        this.corpo = corpo;
+        this.distancia = distancia;
+        this.total_corpo = total_corpo;
+        this.total_distancia = total_distancia;
+
+        this.espaco = espaco;
+        this.alcance = alcance;
+
+        this.ataques_especiais = ataques_especiais;
+        this.qualidades_especiais = qualidades_especiais;
+
+        this.tendencia = tendencia;
+
+        this.fortitude = fortitude;
+        this.reflexos = reflexos;
+        this.vontade = vontade;
+
+
+        //---Habilidades---//
+        this.hFor = hFor;
+        this.hDes = hDes;
+        this.hCon = hCon;
+        this.hSab = hSab;
+        this.hInt = hInt;
+        this.hCar = hCar;
+        //-----------------//
+
+        //------Modificadores de Habilidade------//
+        mFor = modificador_de_habilidade(hFor);
+        mDes = modificador_de_habilidade(hDes);
+        mCon = modificador_de_habilidade(hCon);
+        mSab = modificador_de_habilidade(hSab);
+        mInt = modificador_de_habilidade(hInt);
+        mCar = modificador_de_habilidade(hCar);
+        //----------------------------------------//
+
+        //-Atributos Automáticos-//
+        calcula_armadura();
+        calcula_iniciativa();
+        calcula_resistencias();
+        calcula_agarrar();
+        //-----------------------//
+
+        //Instanciando e atribuindo os valores ao String talentos
+        talentos = new String[talents.length];
+
+        for(int i = 0; i < talentos.length; i++){
+            talentos[i] = talents[i];
+        }
+        //Fim do processo
+
+        //Instanciando e atribuindo os valores ao String perícias
+        pericias = new String[peric.length];
+
+        for(int i = 0; i < pericias.length; i++){
+            pericias[i] = peric[i];
+        }
+        //Fim do processo
+
+    }
+    /*----------------------------|---------------------|--------------------------------*/
+
+   /*---------------------------\\------------------------//--------------------------------*/
 
 
 
@@ -529,6 +583,18 @@ public class Criatura {
 
             atualiza_dados();
         }
+    }
+
+    public void set_armadura(int armadura){
+        this.armadura = armadura;
+
+        atualiza_dados();
+    }
+
+    public void set_armadura_natural(int armadura_natural){
+        this.armadura_natural = armadura_natural;
+
+        atualiza_dados();
     }
     /*----------------------------|----------------------|----------------------------*/
 
