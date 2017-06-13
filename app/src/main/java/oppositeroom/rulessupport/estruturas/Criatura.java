@@ -24,10 +24,13 @@ public class Criatura {
     protected String deslocamento, escalada, natacao;
 
     //Testes de Resistência e Outros Modificadores que os Influenciam:
-    protected int fortitude, reflexos, vontade;
-    protected int[] outros_fortitude = {0, 0, 0, 0, 0};
-    protected int[] outros_reflexos = {0, 0, 0, 0, 0};
-    protected int[] outros_vontade = {0, 0, 0, 0, 0};
+    private int fortitude, reflexos, vontade;
+    private int classe_fortitude = 0;
+    private int[] outros_fortitude = {0, 0, 0, 0, 0};
+    private int classe_reflexos = 0;
+    private int[] outros_reflexos = {0, 0, 0, 0, 0};
+    private int classe_vontade = 0;
+    private int[] outros_vontade = {0, 0, 0, 0, 0};
 
     //Modificadores de Combate:
     protected int ataque_base, agarrar, iniciativa;
@@ -50,7 +53,7 @@ public class Criatura {
     protected int armadura = 0;
     protected int armadura_natural = 0;
     protected int[] outros_modificadores_armadura = {0, 0, 0};
-    protected int[] outros_modificadores_destreza = {0, 0, 0};
+    protected int[] outros_modificadores_armadura_destreza = {0, 0, 0};
 
     //Equipamentos em uso:
     private String[] armas = {"", "", "", "", "", ""};
@@ -378,8 +381,8 @@ public class Criatura {
             outros_armadura = outros_armadura + outros_modificadores_armadura[i];
         }
 
-        for(int i = 0; i < outros_modificadores_destreza.length; i++){
-            outros_destreza = outros_destreza + outros_modificadores_destreza[i];
+        for(int i = 0; i < outros_modificadores_armadura_destreza.length; i++){
+            outros_destreza = outros_destreza + outros_modificadores_armadura_destreza[i];
         }
 
         ca = 10 + mDes + armadura + armadura_natural + outros_armadura + outros_destreza;
@@ -410,9 +413,9 @@ public class Criatura {
             outros_v = outros_v + outros_vontade[i];
         }
 
-        fortitude = fortitude + outros_f;
-        reflexos = reflexos + outros_r;
-        vontade = vontade + outros_v;
+        fortitude = classe_fortitude + mCon + outros_f;
+        reflexos = classe_reflexos + mDes + outros_r;
+        vontade = classe_vontade + mSab + outros_v;
     }
 
 
@@ -515,6 +518,8 @@ public class Criatura {
    /*-----------------------------// Métodos de Escrita \\------------------------------*/
 
     /*----------------------------| Outros Modificadores |----------------------------*/
+
+    //----------------- Modificadores de Armadura ----------------------//
     public void set_outros_modificadores_armadura(int[] modificadores){
         if (modificadores.length == outros_modificadores_armadura.length) {
             for (int i = 0; i < modificadores.length; i++) {
@@ -526,15 +531,17 @@ public class Criatura {
     }
 
     public void set_outros_modificadores_destreza(int[] modificadores){
-        if (modificadores.length == outros_modificadores_destreza.length) {
+        if (modificadores.length == outros_modificadores_armadura_destreza.length) {
             for (int i = 0; i < modificadores.length; i++) {
-                outros_modificadores_destreza[i] = modificadores[i];
+                outros_modificadores_armadura_destreza[i] = modificadores[i];
             }
 
             atualiza_dados();
         }
     }
+    //------------------------------------------------------------------//
 
+    //-------------- Modificadores dos Testes de Resistência -------------------//
     public void set_outros_fortitude(int[] outros){
         if (outros.length == outros_fortitude.length) {
             for (int i = 0; i < outros.length; i++) {
@@ -543,6 +550,12 @@ public class Criatura {
 
             atualiza_dados();
         }
+    }
+
+    public void set_classe_fortitude(int classe_fortitude){
+        this.classe_fortitude = classe_fortitude;
+
+        atualiza_dados();
     }
 
     public void set_outros_reflexos(int[] outros){
@@ -555,6 +568,12 @@ public class Criatura {
         }
     }
 
+    public void set_classe_reflexos(int classe_reflexos){
+        this.classe_reflexos = classe_reflexos;
+
+        atualiza_dados();
+    }
+
     public void set_outros_vontade(int[] outros){
         if (outros.length == outros_vontade.length) {
             for (int i = 0; i < outros.length; i++) {
@@ -565,6 +584,14 @@ public class Criatura {
         }
     }
 
+    public void set_classe_vontade(int classe_vontade){
+        this.classe_vontade = classe_vontade;
+
+        atualiza_dados();
+    }
+    //--------------------------------------------------------------------------//
+
+    //-------------- Outros Mod. de Iniciativa -------------------//
     public void set_outros_iniciativa(int[] outros){
         if (outros.length == outros_iniciativa.length) {
             for (int i = 0; i < outros.length; i++) {
@@ -574,7 +601,9 @@ public class Criatura {
             atualiza_dados();
         }
     }
+    //------------------------------------------------------------//
 
+    //-------------- Outros Mod. de Agarrar -------------------//
     public void set_outros_agarrar(int[] outros){
         if (outros.length == outros_agarrar.length) {
             for (int i = 0; i < outros.length; i++) {
@@ -584,7 +613,9 @@ public class Criatura {
             atualiza_dados();
         }
     }
+    //---------------------------------------------------------//
 
+    //-------------- Mod. de Armadura -------------------//
     public void set_armadura(int armadura){
         this.armadura = armadura;
 
@@ -596,6 +627,8 @@ public class Criatura {
 
         atualiza_dados();
     }
+    //---------------------------------------------------//
+
     /*----------------------------|----------------------|----------------------------*/
 
    /*-----------------------------\\--------------------//------------------------------*/
