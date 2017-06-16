@@ -517,6 +517,49 @@ public class Criatura {
 
    /*-----------------------------// Métodos de Escrita \\------------------------------*/
 
+   /*--------------| Habilidades e seus Modificadores |----------------*/
+    public void set_hFor(int hFor){
+        //Habilidade:
+        this.hFor = hFor;
+        //Atualizando o Modificador da Habilidade:
+        mFor = modificador_de_habilidade(this.hFor);
+    }
+
+    public void set_hDes(int hDes){
+        //Habilidade:
+        this.hDes = hDes;
+        //Atualizando o Modificador da Habilidade:
+        mDes = modificador_de_habilidade(this.hDes);
+    }
+
+    public void set_hCon(int hCon){
+        //Habilidade:
+        this.hCon = hCon;
+        //Atualizando o Modificador da Habilidade:
+        mCon = modificador_de_habilidade(this.hCon);
+    }
+
+    public void set_hSab(int hSab){
+        //Habilidade:
+        this.hSab = hSab;
+        //Atualizando o Modificador da Habilidade:
+        mSab = modificador_de_habilidade(this.hSab);
+    }
+
+    public void set_hInt(int hInt){
+        //Habilidade:
+        this.hInt = hInt;
+        //Atualizando o Modificador da Habilidade:
+        mInt = modificador_de_habilidade(this.hInt);
+    }
+
+    public void set_hCar(int hCar){
+        //Habilidade:
+        this.hCar = hCar;
+        //Atualizando o Modificador da Habilidade:
+        mCar = modificador_de_habilidade(this.hCar);
+    }
+
     /*----------------------------| Outros Modificadores |----------------------------*/
 
     //----------------- Modificadores de Armadura ----------------------//
