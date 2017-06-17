@@ -11,8 +11,8 @@ package oppositeroom.rulessupport.estruturas;
 
 public class Pericia {
 
-    private String nome;
-    private int modificador_pericia;
+    private String nome = "";
+    private int modificador_pericia = 0;
 
     /**-----------------------------------// Construtores \\----------------------------------------**/
     public Pericia(String nome, int graduacoes, int modificador_habilidade, int outros_modificadores){
@@ -34,8 +34,7 @@ public class Pericia {
     }
 
     public Pericia(){
-        nome = "";
-        modificador_pericia = 0;
+        
     }
     /**-----------------------------------\\--------------//----------------------------------------**/
 
