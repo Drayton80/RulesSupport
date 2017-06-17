@@ -16,7 +16,13 @@ public class Pericia {
     public Pericia(String nome, int graduacoes, int modificador_habilidade, int outros_modificadores){
         this.nome = nome;
 
-        modificador_pericia = 0;
+        modificador_pericia = graduacoes + modificador_habilidade + outros_modificadores;
+    }
+
+    public Pericia(String nome, int graduacoes, int modificador_habilidade){
+        this.nome = nome;
+
+        modificador_pericia = graduacoes + modificador_habilidade;
     }
 
     public void set_nome(String nome){
