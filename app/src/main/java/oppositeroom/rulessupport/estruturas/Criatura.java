@@ -22,6 +22,8 @@ public class Criatura {
     protected String dados_de_vida;
     //Deslocamento:
     protected String deslocamento, escalada, natacao;
+    //Nivel Efetivo de Personagem:
+    private int nivel_efetivo = 0;
 
     //Testes de Resistência e Outros Modificadores que os Influenciam:
     private int fortitude, reflexos, vontade;
@@ -62,7 +64,7 @@ public class Criatura {
     //for(...) { armas[i].equals("") ? "" : armas[i]; --> para não poluir ao exibir os vazios
 
     //Talentos, perícias e tesouros:
-    private String[] talentos;
+    private Talento[] talentos;
     private Pericia[] pericias;
     private String[] moedas = {"0 PC", "0 PP", "0 PO", "0 PL"};
     private String[] gemas = {"", "", "", "", "", "", "", "", "", "", ""};
@@ -80,7 +82,47 @@ public class Criatura {
      *    de uma criatura (D&D 3.5, Livro do Mestre, Página 84) com algumas alterações para que
      *    sejam recebidas também talentos e perícias.
      */
-    public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
+    /** Parametros:
+     *
+     * @param nome
+     * @param nivel
+     * @param nd
+     * @param tipo
+     * @param tamanho
+     * @param subtipos
+     * @param dados_de_vida
+     * @param pv
+     * @param iniciativa
+     * @param deslocamento
+     * @param escalada
+     * @param natacao
+     * @param ca
+     * @param toque
+     * @param surpresa
+     * @param ataque_base
+     * @param agarrar
+     * @param corpo
+     * @param distancia
+     * @param total_corpo
+     * @param total_distancia
+     * @param espaco
+     * @param alcance
+     * @param ataques_especiais
+     * @param qualidades_especiais
+     * @param tendencia
+     * @param fortitude
+     * @param reflexos
+     * @param vontade
+     * @param hFor
+     * @param hDes
+     * @param hCon
+     * @param hSab
+     * @param hInt
+     * @param hCar
+     * @param talents
+     * @param peric
+     */
+    public Criatura ( String nome, int nivel, double nd, String tipo, String tamanho, String subtipos,
                       String dados_de_vida, int pv, int iniciativa, String deslocamento,
                       String escalada, String natacao, int ca, int toque, int surpresa,
                       int ataque_base, int agarrar, String corpo, String distancia,
@@ -89,9 +131,10 @@ public class Criatura {
                       String qualidades_especiais, String tendencia,
                       int fortitude, int reflexos, int vontade,
                       int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
-                      String[] talents, Pericia[] peric){
+                      Talento[] talents, Pericia[] peric){
 
         this.nome = nome;
+        nivel_efetivo = nivel;
         this.nd = nd;
 
         this.tipo = tipo;
@@ -143,7 +186,7 @@ public class Criatura {
         //----------------------------------------//
 
         //Instanciando e atribuindo os valores ao String talentos
-        talentos = new String[talents.length];
+        talentos = new Talento[talents.length];
 
         for(int i = 0; i < talentos.length; i++){
             talentos[i] = talents[i];
@@ -167,7 +210,39 @@ public class Criatura {
      *    Esse construtor recebe todos quase todos os dados de uma criatura e calcula automaticamente
      *    os que sobraram.
      */
-    public Criatura ( String nome, double nd, String tipo, String tamanho, String subtipos,
+    /** Parametros:
+     *
+     * @param nome
+     * @param nivel
+     * @param nd
+     * @param tipo
+     * @param tamanho
+     * @param subtipos
+     * @param dados_de_vida
+     * @param pv
+     * @param deslocamento
+     * @param escalada
+     * @param natacao
+     * @param ataque_base
+     * @param corpo
+     * @param distancia
+     * @param total_corpo
+     * @param total_distancia
+     * @param espaco
+     * @param alcance
+     * @param ataques_especiais
+     * @param qualidades_especiais
+     * @param tendencia
+     * @param hFor
+     * @param hDes
+     * @param hCon
+     * @param hSab
+     * @param hInt
+     * @param hCar
+     * @param talents
+     * @param peric
+     */
+    public Criatura ( String nome, int nivel, double nd, String tipo, String tamanho, String subtipos,
                       String dados_de_vida, int pv, String deslocamento,
                       String escalada, String natacao,
                       int ataque_base, String corpo, String distancia,
@@ -175,9 +250,10 @@ public class Criatura {
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
                       int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
-                      String[] talents, Pericia[] peric){
+                      Talento[] talents, Pericia[] peric){
 
         this.nome = nome;
+        nivel_efetivo = nivel;
         this.nd = nd;
 
         this.tipo = tipo;
@@ -205,9 +281,6 @@ public class Criatura {
 
         this.tendencia = tendencia;
 
-        this.fortitude = fortitude;
-        this.reflexos = reflexos;
-        this.vontade = vontade;
 
 
         //---Habilidades---//
@@ -236,7 +309,7 @@ public class Criatura {
         //-----------------------//
 
         //Instanciando e atribuindo os valores ao String talentos
-        talentos = new String[talents.length];
+        talentos = new Talento[talents.length];
 
         for(int i = 0; i < talentos.length; i++){
             talentos[i] = talents[i];
@@ -508,6 +581,21 @@ public class Criatura {
         calcula_resistencias();
         calcula_iniciativa();
         calcula_agarrar();
+    }
+
+
+    /** Instanciador do Número Total de Talentos
+     *    Descvrição:
+     *      Recebe o nível efetivo do personagem como parâmetro e através dele instancia o
+     *      array de Talento com o número de índices que ele terá.
+     *
+     *      NOTA: Ainda está incompleto
+     * @param nivel_efetivo
+     */
+    public void numero_de_talentos(int nivel_efetivo){
+        int numero = 0;
+
+        if(nivel_efetivo == 1);
     }
 
    /*----------------------------\\----------------------//-----------------------------*/
