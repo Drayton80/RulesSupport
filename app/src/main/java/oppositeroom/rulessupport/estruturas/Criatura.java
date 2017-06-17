@@ -6,7 +6,7 @@ package oppositeroom.rulessupport.estruturas;
  *      os moldes de criaturas relativas ao D&D 3.5.
  *
  *  Grupo: Opposite Room
- *    Autor: Drayton80
+ *    Autores: Drayton80, EwertonDNSantos
  *
  */
 
@@ -63,7 +63,7 @@ public class Criatura {
 
     //Talentos, perícias e tesouros:
     private String[] talentos;
-    private String[] pericias;
+    private Pericia[] pericias;
     private String[] moedas = {"0 PC", "0 PP", "0 PO", "0 PL"};
     private String[] gemas = {"", "", "", "", "", "", "", "", "", "", ""};
     private String[] obras_arte = {"", "", "", "", "", "", "", "", "", "", ""};
@@ -89,7 +89,7 @@ public class Criatura {
                       String qualidades_especiais, String tendencia,
                       int fortitude, int reflexos, int vontade,
                       int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
-                      String[] talents, String[] peric){
+                      String[] talents, Pericia[] peric){
 
         this.nome = nome;
         this.nd = nd;
@@ -151,7 +151,7 @@ public class Criatura {
         //Fim do processo
 
         //Instanciando e atribuindo os valores ao String perícias
-        pericias = new String[peric.length];
+        pericias = new Pericia[peric.length];
 
         for(int i = 0; i < pericias.length; i++){
             pericias[i] = peric[i];
@@ -175,7 +175,7 @@ public class Criatura {
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
                       int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
-                      String[] talents, String[] peric){
+                      String[] talents, Pericia[] peric){
 
         this.nome = nome;
         this.nd = nd;
@@ -244,7 +244,7 @@ public class Criatura {
         //Fim do processo
 
         //Instanciando e atribuindo os valores ao String perícias
-        pericias = new String[peric.length];
+        pericias = new Pericia[peric.length];
 
         for(int i = 0; i < pericias.length; i++){
             pericias[i] = peric[i];
