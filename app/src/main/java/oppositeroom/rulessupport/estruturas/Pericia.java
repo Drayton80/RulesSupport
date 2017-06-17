@@ -10,9 +10,11 @@ package oppositeroom.rulessupport.estruturas;
  */
 
 public class Pericia {
+
     private String nome;
     private int modificador_pericia;
 
+    /**-----------------------------------// Construtores \\----------------------------------------**/
     public Pericia(String nome, int graduacoes, int modificador_habilidade, int outros_modificadores){
         this.nome = nome;
 
@@ -25,6 +27,21 @@ public class Pericia {
         modificador_pericia = graduacoes + modificador_habilidade;
     }
 
+    public Pericia(String nome, int modificador_habilidade){
+        this.nome = nome;
+
+        modificador_pericia = modificador_habilidade;
+    }
+
+    public Pericia(){
+        nome = "";
+        modificador_pericia = 0;
+    }
+    /**-----------------------------------\\--------------//----------------------------------------**/
+
+
+
+    /**-----------------------------------// Métodos de Escrita \\----------------------------------------**/
     public void set_nome(String nome){
         this.nome = nome;
     }
@@ -32,7 +49,10 @@ public class Pericia {
     public void set_modificador_pericia(int modificador_pericia){
         this.modificador_pericia = modificador_pericia;
     }
+    /**-----------------------------------\\--------------------//----------------------------------------**/
 
+
+    /**-----------------------------------// Métodos de Leitura \\----------------------------------------**/
     public String get_nome(){
         return nome;
     }
@@ -40,4 +60,5 @@ public class Pericia {
     public int get_modificador_pericia(){
         return modificador_pericia;
     }
+    /**-----------------------------------\\--------------------//----------------------------------------**/
 }
