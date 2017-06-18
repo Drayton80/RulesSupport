@@ -878,6 +878,79 @@ public class Criatura {
     }
 
 
+
+    public void set_espaco(String espaco) {
+        this.espaco = espaco;
+    }
+
+    public void set_alcance(String alcance) {
+        this.alcance = alcance;
+    }
+
+    public void set_tamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+
+    public void set_nome(String nome) {
+        this.nome = nome;
+    }
+
+    public void set_tipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public void set_subtipos(String subtipos) {
+        this.subtipos = subtipos;
+    }
+
+    public void set_tendencia(String tendencia) {
+        this.tendencia = tendencia;
+    }
+
+
+    public void set_qualidades_especiais(String qualidades_especiais) {
+        this.qualidades_especiais = qualidades_especiais;
+    }
+
+    public void set_ataques_especiais(String ataques_especiais) {
+        this.ataques_especiais = ataques_especiais;
+    }
+
+
+    public void set_armas(String[] armas) {
+        this.armas = armas;
+    }
+
+    public void set_armadura_equipamento(String armadura_equipamento) {
+        this.armadura_equipamento = armadura_equipamento;
+    }
+
+    public void set_outros_equipamentos(String[] outros_equips) {
+        outros_equipamentos =  new String[outros_equips.length];
+
+        for(int i = 0; i < outros_equipamentos.length; i++){
+            outros_equipamentos[i] = outros_equips[i];
+        }
+    }
+
+
+
+    public void set_talentos(Talento[] talents) {
+        talentos = new Talento[talents.length];
+
+        for(int i = 0; i < talentos.length; i++){
+            talentos[i] = talents[i];
+        }
+    }
+
+    public void set_pericias(Pericia[] peric) {
+        pericias = new Pericia[peric.length];
+
+        for(int i = 0; i < pericias.length; i++){
+            pericias[i] = peric[i];
+        }
+    }
     //----------------------------------|--------|---------------------------------//
 
     /*-----------------------------\\--------------------//------------------------------*/
@@ -1064,73 +1137,41 @@ public class Criatura {
         return espaco;
     }
 
-    public void set_espaco(String espaco) {
-        this.espaco = espaco;
-    }
-
     public String get_alcance() {
         return alcance;
-    }
-
-    public void set_alcance(String alcance) {
-        this.alcance = alcance;
     }
 
     public String get_tamanho() {
         return tamanho;
     }
 
-    public void set_tamanho(String tamanho) {
-        this.tamanho = tamanho;
-    }
+
 
     public String get_nome() {
         return nome;
-    }
-
-    public void set_nome(String nome) {
-        this.nome = nome;
     }
 
     public String get_tipo() {
         return tipo;
     }
 
-    public void set_tipo(String tipo) {
-        this.tipo = tipo;
-    }
-
     public String get_subtipos() {
         return subtipos;
-    }
-
-    public void set_subtipos(String subtipos) {
-        this.subtipos = subtipos;
     }
 
     public String get_tendencia() {
         return tendencia;
     }
 
-    public void set_tendencia(String tendencia) {
-        this.tendencia = tendencia;
-    }
 
     public String get_qualidades_especiais() {
         return qualidades_especiais;
-    }
-
-    public void set_qualidades_especiais(String qualidades_especiais) {
-        this.qualidades_especiais = qualidades_especiais;
     }
 
     public String get_ataques_especiais() {
         return ataques_especiais;
     }
 
-    public void set_ataques_especiais(String ataques_especiais) {
-        this.ataques_especiais = ataques_especiais;
-    }
 
 
     public int get_armadura() {
@@ -1154,49 +1195,24 @@ public class Criatura {
         return armas;
     }
 
-    public void set_armas(String[] armas) {
-        this.armas = armas;
-    }
-
     public String get_armadura_equipamento() {
         return armadura_equipamento;
-    }
-
-    public void set_armadura_equipamento(String armadura_equipamento) {
-        this.armadura_equipamento = armadura_equipamento;
     }
 
     public String[] get_outros_equipamentos() {
         return outros_equipamentos;
     }
 
-    public void set_outros_equipamentos(String[] outros_equipamentos) {
-        this.outros_equipamentos = outros_equipamentos;
-    }
+
 
     public Talento[] get_talentos() {
         return talentos;
-    }
-
-    public void set_talentos(Talento[] talents) {
-        talentos = new Talento[talents.length];
-
-        for(int i = 0; i < talentos.length; i++){
-            talentos[i] = talents[i];
-        }
     }
 
     public Pericia[] get_pericias() {
         return pericias;
     }
 
-    public void set_pericias(Pericia[] peric) {
-        pericias = new Pericia[peric.length];
-
-        for(int i = 0; i < pericias.length; i++){
-            pericias[i] = peric[i];
-        }
-    }
 
 
 
