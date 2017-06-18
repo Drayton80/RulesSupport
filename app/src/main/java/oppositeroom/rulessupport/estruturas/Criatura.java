@@ -661,7 +661,7 @@ public class Criatura {
         }
     }
 
-    public void set_outros_modificadores_destreza(int[] modificadores){
+    public void set_outros_modificadores_armadura_destreza(int[] modificadores){
         if (modificadores.length == outros_modificadores_armadura_destreza.length) {
             for (int i = 0; i < modificadores.length; i++) {
                 outros_modificadores_armadura_destreza[i] = modificadores[i];
@@ -759,6 +759,405 @@ public class Criatura {
         atualiza_dados();
     }
     //---------------------------------------------------//
+
+
+    /*-----------------------------// Métodos de Leitura e Escrita \\------------------------------*/
+
+    
+    public int get_mFor() {
+        return mFor;
+    }
+
+    public void set_mFor(int mFor) {
+        this.mFor = mFor;
+    }
+
+    public int get_mDes() {
+        return mDes;
+    }
+
+    public void set_mDes(int mDes) {
+        this.mDes = mDes;
+    }
+
+    public int get_mCon() {
+        return mCon;
+    }
+
+    public void set_mCon(int mCon) {
+        this.mCon = mCon;
+    }
+
+    public int get_mSab() {
+        return mSab;
+    }
+
+    public void set_mSab(int mSab) {
+        this.mSab = mSab;
+    }
+
+    public int get_mInt() {
+        return mInt;
+    }
+
+    public void set_mInt(int mInt) {
+        this.mInt = mInt;
+    }
+
+    public int get_mCar() {
+        return mCar;
+    }
+
+    public void set_mCar(int mCar) {
+        this.mCar = mCar;
+    }
+
+    public double get_Nd() {
+        return nd;
+    }
+
+    public void set_Nd(double nd) {
+        this.nd = nd;
+    }
+
+    public int get_Pv() {
+        return pv;
+    }
+
+    public void set_Pv(int pv) {
+        this.pv = pv;
+    }
+
+    public String get_Dados_de_vida() {
+        return dados_de_vida;
+    }
+
+    public void set_Dados_de_vida(String dados_de_vida) {
+        this.dados_de_vida = dados_de_vida;
+    }
+
+    public String get_Deslocamento() {
+        return deslocamento;
+    }
+
+    public void set_Deslocamento(String deslocamento) {
+        this.deslocamento = deslocamento;
+    }
+
+    public String get_Escalada() {
+        return escalada;
+    }
+
+    public void set_Escalada(String escalada) {
+        this.escalada = escalada;
+    }
+
+    public String get_Natacao() {
+        return natacao;
+    }
+
+    public void set_Natacao(String natacao) {
+        this.natacao = natacao;
+    }
+
+    public int get_Nivel_efetivo() {
+        return nivel_efetivo;
+    }
+
+    public void set_Nivel_efetivo(int nivel_efetivo) {
+        this.nivel_efetivo = nivel_efetivo;
+    }
+
+    public int get_Fortitude() {
+        return fortitude;
+    }
+
+    public void set_Fortitude(int fortitude) {
+        this.fortitude = fortitude;
+    }
+
+    public int get_Reflexos() {
+        return reflexos;
+    }
+
+    public void set_Reflexos(int reflexos) {
+        this.reflexos = reflexos;
+    }
+
+    public int get_Vontade() {
+        return vontade;
+    }
+
+    public void set_Vontade(int vontade) {
+        this.vontade = vontade;
+    }
+
+    public int get_Classe_fortitude() {
+        return classe_fortitude;
+    }
+
+    public int[] get_Outros_fortitude() {
+        return outros_fortitude;
+    }
+
+    public int get_Classe_reflexos() {
+        return classe_reflexos;
+    }
+
+    public int[] get_Outros_reflexos() {
+        return outros_reflexos;
+    }
+
+    public int get_Classe_vontade() {
+        return classe_vontade;
+    }
+
+    public int[] get_Outros_vontade() {
+        return outros_vontade;
+    }
+
+    public int get_Ataque_base() {
+        return ataque_base;
+    }
+
+    public void set_Ataque_base(int ataque_base) {
+        this.ataque_base = ataque_base;
+    }
+
+    public int get_Agarrar() {
+        return agarrar;
+    }
+
+    public void set_Agarrar(int agarrar) {
+        this.agarrar = agarrar;
+    }
+
+    public int get_Iniciativa() {
+        return iniciativa;
+    }
+
+    public void set_Iniciativa(int iniciativa) {
+        this.iniciativa = iniciativa;
+    }
+
+    public int get_Ca() {
+        return ca;
+    }
+
+    public void set_Ca(int ca) {
+        this.ca = ca;
+    }
+
+    public int get_Toque() {
+        return toque;
+    }
+
+    public void set_Toque(int toque) {
+        this.toque = toque;
+    }
+
+    public int get_Surpresa() {
+        return surpresa;
+    }
+
+    public void set_Surpresa(int surpresa) {
+        this.surpresa = surpresa;
+    }
+
+    public int[] get_Outros_iniciativa() {
+        return outros_iniciativa;
+    }
+
+
+    public int[] get_Outros_agarrar() {
+        return outros_agarrar;
+    }
+
+
+    public String get_Corpo() {
+        return corpo;
+    }
+
+    public void set_Corpo(String corpo) {
+        this.corpo = corpo;
+    }
+
+    public String get_Distancia() {
+        return distancia;
+    }
+
+    public void set_Distancia(String distancia) {
+        this.distancia = distancia;
+    }
+
+    public String get_Total_corpo() {
+        return total_corpo;
+    }
+
+    public void set_Total_corpo(String total_corpo) {
+        this.total_corpo = total_corpo;
+    }
+
+    public String get_Total_distancia() {
+        return total_distancia;
+    }
+
+    public void set_Total_distancia(String total_distancia) {
+        this.total_distancia = total_distancia;
+    }
+
+    public String get_Espaco() {
+        return espaco;
+    }
+
+    public void set_Espaco(String espaco) {
+        this.espaco = espaco;
+    }
+
+    public String get_Alcance() {
+        return alcance;
+    }
+
+    public void set_Alcance(String alcance) {
+        this.alcance = alcance;
+    }
+
+    public String get_Tamanho() {
+        return tamanho;
+    }
+
+    public void set_Tamanho(String tamanho) {
+        this.tamanho = tamanho;
+    }
+
+    public String get_Nome() {
+        return nome;
+    }
+
+    public void set_Nome(String nome) {
+        this.nome = nome;
+    }
+
+    public String get_Tipo() {
+        return tipo;
+    }
+
+    public void set_Tipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String get_Subtipos() {
+        return subtipos;
+    }
+
+    public void set_Subtipos(String subtipos) {
+        this.subtipos = subtipos;
+    }
+
+    public String get_Tendencia() {
+        return tendencia;
+    }
+
+    public void set_Tendencia(String tendencia) {
+        this.tendencia = tendencia;
+    }
+
+    public String get_Qualidades_especiais() {
+        return qualidades_especiais;
+    }
+
+    public void set_Qualidades_especiais(String qualidades_especiais) {
+        this.qualidades_especiais = qualidades_especiais;
+    }
+
+    public String get_Ataques_especiais() {
+        return ataques_especiais;
+    }
+
+    public void set_Ataques_especiais(String ataques_especiais) {
+        this.ataques_especiais = ataques_especiais;
+    }
+
+    public int get_Armadura() {
+        return armadura;
+    }
+
+    public int get_Armadura_natural() {
+        return armadura_natural;
+    }
+
+    public int[] get_Outros_modificadores_armadura() {
+        return outros_modificadores_armadura;
+    }
+
+    public int[] get_Outros_modificadores_armadura_destreza() {
+        return outros_modificadores_armadura_destreza;
+    }
+
+    public String[] get_Armas() {
+        return armas;
+    }
+
+    public void set_Armas(String[] armas) {
+        this.armas = armas;
+    }
+
+    public String get_Armadura_equipamento() {
+        return armadura_equipamento;
+    }
+
+    public void set_Armadura_equipamento(String armadura_equipamento) {
+        this.armadura_equipamento = armadura_equipamento;
+    }
+
+    public String[] get_Outros_equipamentos() {
+        return outros_equipamentos;
+    }
+
+    public void set_Outros_equipamentos(String[] outros_equipamentos) {
+        this.outros_equipamentos = outros_equipamentos;
+    }
+
+    public Talento[] get_Talentos() {
+        return talentos;
+    }
+
+    public void set_Talentos(Talento[] talentos) {
+        this.talentos = talentos;
+    }
+
+    public Pericia[] get_Pericias() {
+        return pericias;
+    }
+
+    public void set_Pericias(Pericia[] pericias) {
+        this.pericias = pericias;
+    }
+
+    public String[] get_Moedas() {
+        return moedas;
+    }
+
+    public void set_Moedas(String[] moedas) {
+        this.moedas = moedas;
+    }
+
+    public String[] get_Gemas() {
+        return gemas;
+    }
+
+    public void set_Gemas(String[] gemas) {
+        this.gemas = gemas;
+    }
+
+    public String[] get_Obras_arte() {
+        return obras_arte;
+    }
+
+    public void set_Obras_arte(String[] obras_arte) {
+        this.obras_arte = obras_arte;
+    }
+
 
     /*----------------------------|----------------------|----------------------------*/
 
