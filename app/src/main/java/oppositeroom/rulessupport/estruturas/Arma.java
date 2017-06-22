@@ -1,7 +1,13 @@
 package oppositeroom.rulessupport.estruturas;
 
-/**
- * Created by drayt on 20/06/2017.
+/** Classe Arma
+ *    Descrição:
+ *      Classe que servirá de instância para qualquer arma (seja arma natural ou não) que uma
+ *      Criatura possuir.
+ *
+ *  Grupo: Opposite Room
+ *    Autor: Drayton80
+ *
  */
 
 public class Arma {
