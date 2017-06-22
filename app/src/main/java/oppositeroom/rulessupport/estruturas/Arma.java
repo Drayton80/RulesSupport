@@ -11,6 +11,9 @@ public class Arma {
     private String dano_adicional = "";         //Danos especiais, como fogo, veneno, etc.
     private int modificador_de_dano = 0;
     private int modificador_de_ataque = 0;
+    //Ainda falta a penalidade por ataque, como, por exemplo, devido à Combater com Duas Armas ou Ataques Mútliplos, mas
+    //tal penalidade pode ser atribuida e calculada na tela de cadastro e registro da seguinte forma:
+    //  outros_atque = outros + penalidade (que será negativa)
 
 
    /*-*-------------------------------// Construtor da Classe \\------------------------------------*-*/
