@@ -17,6 +17,7 @@ public class Arma {
     private String dano_adicional = "";         //Danos especiais, como fogo, veneno, etc.
     private int modificador_de_dano = 0;
     private int modificador_de_ataque = 0;
+    private boolean ataque_total = false;       //Para Saber se é ataque total, será recolhido no for lá que eu pensei, tenho de lembrar desse for (Drayton)
     //Ainda falta a penalidade por ataque, como, por exemplo, devido à Combater com Duas Armas ou Ataques Mútliplos, mas
     //tal penalidade pode ser atribuida e calculada na tela de cadastro e registro da seguinte forma:
     //  outros_atque = outros + penalidade (que será negativa)
@@ -24,13 +25,13 @@ public class Arma {
 
    /*-*-------------------------------// Construtor da Classe \\------------------------------------*-*/
     public Arma(String nome, String categoria, String dano, String dano_adicional, int mFor, int mDes,
-                int bba, int outros_ataque, int outros_dano){
+                int bba, int outros_ataque, int outros_dano, boolean ataque_total){
 
-        this.nome = nome;
-        this.categoria = categoria;
-        this.dano  = dano;
+        this.nome           = nome;
+        this.categoria      = categoria;
+        this.dano           = dano;
         this.dano_adicional = dano_adicional;
-
+        this.ataque_total   = ataque_total;
 
         //Podemos fazer a categoria como um botão de seleção, tipo aquele que fizemos para escolher
         //o tipo de obra de arte (se era aquarela, foto, vídeo, etc.)
@@ -108,6 +109,10 @@ public class Arma {
     public void set_modificador_de_ataque(int modificador_de_ataque){
         this.modificador_de_ataque = modificador_de_ataque;
     }
+
+    public void set_ataque_total(boolean ataque_total){
+        this.ataque_total = ataque_total;
+    }
     /*---------------------------------|--------------------|--------------------------------------*/
 
 
@@ -134,6 +139,10 @@ public class Arma {
 
     public int get_modificador_de_ataque(){
         return modificador_de_ataque;
+    }
+
+    public boolean get_ataque_total(){
+        return ataque_total;
     }
     /*---------------------------------|--------------------|--------------------------------------*/
 
