@@ -11,10 +11,9 @@ package oppositeroom.rulessupport.estruturas;
  */
 
 public class Criatura {
-    //Habilidades:
-    protected int hFor, hDes, hCon, hSab, hInt, hCar;
-    //Modificadores de Habilidades:
-    protected int mFor, mDes, mCon, mSab, mInt, mCar;
+
+    private Habilidades habilidades;
+
     //Nível de Desafio:
     protected double nd;
     //Vida da Criatura:
@@ -113,12 +112,7 @@ public class Criatura {
      * @param fortitude
      * @param reflexos
      * @param vontade
-     * @param hFor
-     * @param hDes
-     * @param hCon
-     * @param hSab
-     * @param hInt
-     * @param hCar
+     * @param habilidades
      * @param talents
      * @param peric
      */
@@ -130,7 +124,7 @@ public class Criatura {
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
                       int fortitude, int reflexos, int vontade,
-                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
+                      Habilidades habilidades,
                       Talento[] talents, Pericia[] peric){
 
         this.nome = nome;
@@ -166,24 +160,7 @@ public class Criatura {
         this.reflexos = reflexos;
         this.vontade = vontade;
 
-
-        //---Habilidades---//
-        this.hFor = hFor;
-        this.hDes = hDes;
-        this.hCon = hCon;
-        this.hSab = hSab;
-        this.hInt = hInt;
-        this.hCar = hCar;
-        //-----------------//
-
-        //------Modificadores de Habilidade------//
-        mFor = modificador_de_habilidade(hFor);
-        mDes = modificador_de_habilidade(hDes);
-        mCon = modificador_de_habilidade(hCon);
-        mSab = modificador_de_habilidade(hSab);
-        mInt = modificador_de_habilidade(hInt);
-        mCar = modificador_de_habilidade(hCar);
-        //----------------------------------------//
+        this.habilidades = habilidades;
 
         //Instanciando e atribuindo os valores ao String talentos
         talentos = new Talento[talents.length];
@@ -233,12 +210,7 @@ public class Criatura {
      * @param ataques_especiais
      * @param qualidades_especiais
      * @param tendencia
-     * @param hFor
-     * @param hDes
-     * @param hCon
-     * @param hSab
-     * @param hInt
-     * @param hCar
+     * @param habilidades
      * @param talents
      * @param peric
      */
@@ -249,7 +221,7 @@ public class Criatura {
                       String total_corpo, String total_distancia, String espaco,
                       String alcance, String ataques_especiais,
                       String qualidades_especiais, String tendencia,
-                      int hFor, int hDes, int hCon, int hSab, int hInt, int hCar,
+                      Habilidades habilidades,
                       Talento[] talents, Pericia[] peric){
 
         this.nome = nome;
@@ -284,24 +256,9 @@ public class Criatura {
 
 
         //---Habilidades---//
-        this.hFor = hFor;
-        this.hDes = hDes;
-        this.hCon = hCon;
-        this.hSab = hSab;
-        this.hInt = hInt;
-        this.hCar = hCar;
-        //-----------------//
+        this.habilidades = habilidades;
 
-        //------Modificadores de Habilidade------//
-        mFor = modificador_de_habilidade(hFor);
-        mDes = modificador_de_habilidade(hDes);
-        mCon = modificador_de_habilidade(hCon);
-        mSab = modificador_de_habilidade(hSab);
-        mInt = modificador_de_habilidade(hInt);
-        mCar = modificador_de_habilidade(hCar);
-        //----------------------------------------//
-
-        //-Atributos Automáticos-//
+        //-Habilidades Automáticos-//
         calcula_armadura();
         calcula_iniciativa();
         calcula_resistencias();
@@ -330,115 +287,6 @@ public class Criatura {
    /*---------------------------\\------------------------//--------------------------------*/
 
 
-
-
-   /*----------------------------// Métodos de Classe \\-----------------------------*/
-
-    /** Gerador dos Modificadores de Habilidades
-     *    Descrição
-     *      O método recebe como parâmetro uma habilidade e, com base nela,
-     *      atribui um valor ao seu modificador segundo a Tabela 1-1 do
-     *      Livro do Jogador (Player's Handbook) do D&D 3.5.
-     *
-     *    Retorno:
-     *      O método retorna um valor inteiro que representa o modificador
-     *      de habilidade.
-     *
-     */
-    protected static int modificador_de_habilidade(int habilidade){
-        int modificador = 0;
-
-        switch(habilidade){
-            case 1:
-                modificador = -5;
-                break;
-            case 2: case 3:
-                modificador = -4;
-                break;
-            case 4: case 5:
-                modificador = -3;
-                break;
-            case 6: case 7:
-                modificador = -2;
-                break;
-            case 8: case 9:
-                modificador = -1;
-                break;
-            case 10: case 11:
-                modificador = 0;
-                break;
-            case 12: case 13:
-                modificador = 1;
-                break;
-            case 14: case 15:
-                modificador = 2;
-                break;
-            case 16: case 17:
-                modificador = 3;
-                break;
-            case 18: case 19:
-                modificador = 4;
-                break;
-            case 20: case 21:
-                modificador = 5;
-                break;
-            case 22: case 23:
-                modificador = 6;
-                break;
-            case 24: case 25:
-                modificador = 7;
-                break;
-            case 26: case 27:
-                modificador = 8;
-                break;
-            case 28: case 29:
-                modificador = 9;
-                break;
-            case 30: case 31:
-                modificador = 10;
-                break;
-            case 32: case 33:
-                modificador = 11;
-                break;
-            case 34: case 35:
-                modificador = 12;
-                break;
-            case 36: case 37:
-                modificador = 13;
-                break;
-            case 38: case 39:
-                modificador = 14;
-                break;
-            case 40: case 41:
-                modificador = 15;
-                break;
-            case 42: case 43:
-                modificador = 16;
-                break;
-            case 44: case 45:
-                modificador = 17;
-                break;
-            case 46: case 47:
-                modificador = 18;
-                break;
-            case 48: case 49:
-                modificador = 19;
-                break;
-            case 50: case 51:
-                modificador = 20;
-                break;
-            default:
-                modificador = 0;
-        }
-
-        return modificador;
-    }
-
-   /*----------------------------\\-------------------//-----------------------------*/
-
-
-
-
    /*----------------------------// Métodos de Instância \\-----------------------------*/
 
     /** Calculador de Classe de Armadura:
@@ -458,8 +306,8 @@ public class Criatura {
             outros_destreza = outros_destreza + outros_modificadores_armadura_destreza[i];
         }
 
-        ca = 10 + mDes + armadura + armadura_natural + outros_armadura + outros_destreza;
-        toque = 10 + mDes + outros_destreza;
+        ca = 10 + habilidades.getmDes() + armadura + armadura_natural + outros_armadura + outros_destreza;
+        toque = 10 + habilidades.getmDes() + outros_destreza;
         surpresa = 10 + armadura + armadura_natural + outros_armadura;
     }
 
@@ -486,9 +334,9 @@ public class Criatura {
             outros_v = outros_v + outros_vontade[i];
         }
 
-        fortitude = base_fortitude + mCon + outros_f;
-        reflexos = base_reflexos + mDes + outros_r;
-        vontade = base_vontade + mSab + outros_v;
+        fortitude = base_fortitude + habilidades.getmFor() + outros_f;
+        reflexos = base_reflexos + habilidades.getmDes() + outros_r;
+        vontade = base_vontade + habilidades.getmSab() + outros_v;
     }
 
 
@@ -504,7 +352,7 @@ public class Criatura {
             somatoria_outros = somatoria_outros + outros_iniciativa[i];
         }
 
-        iniciativa = mDes + somatoria_outros;
+        iniciativa = habilidades.gethDes() + somatoria_outros;
     }
 
 
@@ -559,11 +407,11 @@ public class Criatura {
             somatorio_outros = somatorio_outros + outros_agarrar[i];
         }
 
-        agarrar = ataque_base + mFor + modificador_tamanho + somatorio_outros;
+        agarrar = ataque_base + habilidades.getmFor() + modificador_tamanho + somatorio_outros;
     }
 
 
-    /** Atualizador de Dados e Atributos:
+    /** Atualizador de Dados e Habilidades:
      *    Descrição:
      *      Esse método atualiza todos os dados que envolvem um cálculo especifico
      *      para gerar um atributo (como, por exemplo, a CA = 10 + ...). O objetivo
@@ -572,7 +420,7 @@ public class Criatura {
      *
      *    Observação Importante:
      *      Deve ser chamado toda vez que for feita alguma alteração nos
-     *      atributos e nos "outros" modificadores que contribuem com os
+     *      habilidades e nos "outros" modificadores que contribuem com os
      *      mesmos.
      *
      */
@@ -601,77 +449,6 @@ public class Criatura {
    /*----------------------------\\----------------------//-----------------------------*/
 
 
-
-
-   /*-----------------------------// Métodos de Escrita \\------------------------------*/
-
-   /*--------------| Habilidades e seus Modificadores |----------------*/
-    public void set_hFor(int hFor){
-        //Habilidade:
-        this.hFor = hFor;
-        //Atualizando o Modificador da Habilidade:
-        mFor = modificador_de_habilidade(this.hFor);
-    }
-
-    public void set_hDes(int hDes){
-        //Habilidade:
-        this.hDes = hDes;
-        //Atualizando o Modificador da Habilidade:
-        mDes = modificador_de_habilidade(this.hDes);
-    }
-
-    public void set_hCon(int hCon){
-        //Habilidade:
-        this.hCon = hCon;
-        //Atualizando o Modificador da Habilidade:
-        mCon = modificador_de_habilidade(this.hCon);
-    }
-
-    public void set_hSab(int hSab){
-        //Habilidade:
-        this.hSab = hSab;
-        //Atualizando o Modificador da Habilidade:
-        mSab = modificador_de_habilidade(this.hSab);
-    }
-
-    public void set_hInt(int hInt){
-        //Habilidade:
-        this.hInt = hInt;
-        //Atualizando o Modificador da Habilidade:
-        mInt = modificador_de_habilidade(this.hInt);
-    }
-
-    public void set_hCar(int hCar){
-        //Habilidade:
-        this.hCar = hCar;
-        //Atualizando o Modificador da Habilidade:
-        mCar = modificador_de_habilidade(this.hCar);
-    }
-
-
-    public void set_mFor(int mFor) {
-        this.mFor = mFor;
-    }
-
-    public void set_mDes(int mDes) {
-        this.mDes = mDes;
-    }
-
-    public void set_mCon(int mCon) {
-        this.mCon = mCon;
-    }
-
-    public void set_mSab(int mSab) {
-        this.mSab = mSab;
-    }
-
-    public void set_mInt(int mInt) {
-        this.mInt = mInt;
-    }
-
-    public void set_mCar(int mCar) {
-        this.mCar = mCar;
-    }
     /*----------------------------| Outros Modificadores |----------------------------*/
 
     //-----------------| Modificadores de Armadura |----------------------//
@@ -957,55 +734,6 @@ public class Criatura {
 
 
     /*-----------------------------// Métodos de Leitura e Escrita \\------------------------------*/
-    public int get_hFor() {
-        return hFor;
-    }
-
-    public int get_hDes() {
-        return hDes;
-    }
-
-    public int get_hCon() {
-        return hCon;
-    }
-
-    public int get_hSab() {
-        return hSab;
-    }
-
-    public int get_hInt(){
-        return hInt;
-    }
-
-    public int get_hCar() {
-        return hCar;
-    }
-
-
-    public int get_mFor() {
-        return mFor;
-    }
-
-    public int get_mDes() {
-        return mDes;
-    }
-
-    public int get_mCon() {
-        return mCon;
-    }
-
-    public int get_mSab() {
-        return mSab;
-    }
-
-    public int get_mInt() {
-        return mInt;
-    }
-
-    public int get_mCar() {
-        return mCar;
-    }
-
 
 
     public double get_nd() {
