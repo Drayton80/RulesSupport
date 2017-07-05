@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="oppositeroom.rulessupport.CadastroMonstro"
+    tools:showIn="@layout/activity_cadastro_monstro">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/informacoes_gerais_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/informacoes_gerais"
+            android:textSize="18sp"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/monstro_nome_label"
+            android:layout_width="0dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Nome da Criatura"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_nome"
+            app:layout_constraintRight_toRightOf="@+id/monstro_nome"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@+id/informacoes_gerais_label" />
+
+        <EditText
+            android:id="@+id/monstro_nome"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_nome_label" />
+
+        <TextView
+            android:id="@+id/monstro_tipo_label"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tipo"
+            android:textSize="14sp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_tipo"
+            app:layout_constraintRight_toRightOf="@+id/monstro_tipo"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_nome" />
+
+        <EditText
+            android:id="@+id/monstro_tipo"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="-4dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tipo_label" />
+
+        <TextView
+            android:id="@+id/monstro_subtipos_label"
+            android:layout_width="0dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/subtipos"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_subtipos"
+            app:layout_constraintRight_toRightOf="@+id/monstro_subtipos"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tipo" />
+
+        <EditText
+            android:id="@+id/monstro_subtipos"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_subtipos_label" />
+
+        <TextView
+            android:id="@+id/monstro_raca_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/raca"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_raca"
+            app:layout_constraintRight_toRightOf="@+id/monstro_raca"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_subtipos" />
+
+        <EditText
+            android:id="@+id/monstro_raca"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_raca_label" />
+
+        <TextView
+            android:id="@+id/monstro_tendencia_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/tendencia"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_tendencia"
+            app:layout_constraintRight_toRightOf="@+id/monstro_tendencia"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_raca"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <EditText
+            android:id="@+id/monstro_tendencia"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/monstro_peso"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tendencia_label"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <TextView
+            android:id="@+id/monstro_peso_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/peso"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_peso"
+            app:layout_constraintRight_toRightOf="@+id/monstro_peso"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_raca"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <EditText
+            android:id="@+id/monstro_peso"
+            android:layout_width="85dp"
+            android:layout_height="43dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColorLink="@android:color/darker_gray"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_peso_label" />
+
+        <TextView
+            android:id="@+id/monstro_tamanho_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/tamanho"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_tamanho"
+            app:layout_constraintRight_toRightOf="@+id/monstro_tamanho"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tendencia" />
+
+        <EditText
+            android:id="@+id/monstro_tamanho"
+            android:layout_width="0dp"
+            android:layout_height="43dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginTop="-24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/monstro_altura"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tamanho_label" />
+
+        <TextView
+            android:id="@+id/monstro_altura_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/altura"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="@+id/monstro_altura"
+            app:layout_constraintRight_toRightOf="@+id/monstro_altura"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_peso" />
+
+        <EditText
+            android:id="@+id/monstro_altura"
+            android:layout_width="85dp"
+            android:layout_height="43dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="0dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:textColorLink="@android:color/darker_gray"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_altura_label" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="17dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/descricao"
+            app:layout_constraintLeft_toLeftOf="@+id/editText"
+            app:layout_constraintRight_toRightOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/monstro_tamanho" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_height="450dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="0dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
