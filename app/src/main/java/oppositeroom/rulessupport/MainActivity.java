@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import oppositeroom.rulessupport.Telas.CadastroMonstro;
 import oppositeroom.rulessupport.Telas.CadastroPlayer;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,6 +30,16 @@ public class MainActivity extends AppCompatActivity {
            }
         });
 
+    }
+
+    public void monstro(View view) {
+        Intent i = new Intent(this, CadastroMonstro.class);
+        startActivity(i);
+    }
+
+    public void player(View view) {
+        Intent i = new Intent(this, CadastroPlayer.class);
+        startActivity(i);
     }
 
 }

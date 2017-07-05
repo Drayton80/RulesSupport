@@ -14,7 +14,7 @@
             android:label="@string/title_activity_cadastro_player"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".CadastroMonstro"
+            android:name=".Telas.CadastroMonstro"
             android:label="@string/title_activity_cadastro_monstro"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

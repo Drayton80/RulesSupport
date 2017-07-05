@@ -8,4 +8,26 @@
     tools:context="oppositeroom.rulessupport.MainActivity"
     tools:showIn="@layout/activity_main">
 
+    <Button
+        android:id="@+id/player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="player"
+        android:text="@string/title_activity_cadastro_player"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="monstro"
+        android:text="mosntro" />
+
 </android.support.constraint.ConstraintLayout>
